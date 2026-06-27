@@ -1,18 +1,25 @@
-def divExp(a,b):
-    assert a>0,"Enter a positve number "
-    if(b==0):
-        raise ZeroDivisionError ("Division with zero not possible")
-    c=a/b
-    return c
-try:
-    a=float(input("Enter the first number - "))
-    b=float(input("Enter the second number - "))
-    print("The result is ",divExp(a,b))
-except AssertionError as s:
-    print("This is an assertion error : ",s)
-except ZeroDivisionError as z :
-    print("There is a zero division error : ",z)
-except ValueError:
-    print("number is not in proper format :")
-    print("Enter a number ")
+# Program to find the top 10 most frequent words in a book
 
+file = open(r"C:\Users\Hardik Gupta\OneDrive\Desktop\book.txt", "r")
+bookContent = file.read().lower()
+file.close()
+
+wordFrequency = {}
+
+for word in bookContent.split():
+    cleanWord = ''.join(char for char in word if char.isalnum())
+
+    if cleanWord:
+        if cleanWord in wordFrequency:
+            wordFrequency[cleanWord] += 1
+        else:
+            wordFrequency[cleanWord] = 1
+
+sortedWords = sorted(wordFrequency.items(),
+                     key=lambda item: item[1],
+                     reverse=True)
+
+print("Top 10 words in the book:\n")
+
+for word, frequency in sortedWords[:10]:
+    print(word, ":", frequency)

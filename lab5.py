@@ -26,5 +26,5 @@ stdDeviation = math.sqrt(sumSquaredDiff / numResponses)
 
 # Display results
 print("Response Times (ms):", responseTimes)
-print("Average Response Time (Mean):", round(meanTime, 2), "ms")
-print("Inconsistent Performance (Standard Deviation):", round(stdDeviation, 2), "ms")
+print(f"Average Response Time (Mean): {round(meanTime, 2)} ms")
+print(f"Inconsistent Performance (Standard Deviation):", round(stdDeviation, 2), "ms")

@@ -1,42 +1,32 @@
-print(" HI , WELCOME TO Gary Icecream Parlour ")
-print("++++++++++++         MENU        +++++++++++++++")
-print(" 1 . VANILLA SCOOP = 40 Rs ")
-print(" 2 . CHOCOLATE SCOOP = 50 Rs ")
-print(" 3 . STRAWBERRY SCOOP = 50 Rs ")
-print(" 4 . MANGO SCOOP = 60 Rs ")
+""""
+You're working as a cashier at a shopping mall. 
+Write a program that asks customers how many items they want to buy. For each item, 
+input the price, Calculate total bill and apply 10% discount if total > Rs. 100. 
+Display itemized receipt
+"""
 
-final_bill = 0
-order_more = "yes"
 
-while order_more == "yes":
-    choice = int(input("Enter your preferred icecream (1-4): "))
-    quantity = int(input("Enter number of scoops: "))
+print(" Welcome to Mustafa central shopping mall ")
+
+discount =0
+
+total=0
+items=int(input("Enter no of items purchased"))
+price_lst = []
+for i in range(items):
+    price= float(input(f"Enter price of item{i+1} - "))
+    price_lst.append(price)
+    total =total + price
     
-    if choice == 1:
-        print(f"You want {quantity} x Vanilla")
-        total_bill = 40 * quantity
-    elif choice == 2:
-        print(f"You want {quantity} x Chocolate")
-        total_bill = 50 * quantity
-    elif choice == 3:
-        print(f"You want {quantity} x Strawberry")
-        total_bill = 50 * quantity
-    elif choice == 4:
-        print(f"You want {quantity} x Mango")
-        total_bill = 60 * quantity
-    else:
-        print("INVALID CHOICE - choose 1 to 4 only")
-        total_bill = 0   # avoid error
-
-    final_bill += total_bill
-    
-    order_more = input("Add more? (yes/no): ").lower()
-
-print("+++++++ FINAL BILL +++++++++++")
-print("Cost of icecream =", final_bill)
-
-tax = final_bill * 0.08
-print("8% tax =", tax)
-
-print("TOTAL AMOUNT TO BE PAID =", final_bill + tax)
-print("ENJOY your sweet treat!")
+if(total>100):
+    discount=total*0.1
+print("================================")
+print("\n")
+for j in range(items):
+    print(f" item {j+1} - Rs {price_lst[j]}")
+print(" Final bill ")
+print("Total cost of items - Rs ", total)
+print("Discount applied - Rs ",discount)
+print(" The customer has to pay Rs - " ,total-discount)
+print("=========================")
+print("Happy shopping")

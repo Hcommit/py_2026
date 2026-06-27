@@ -1,33 +1,37 @@
+"""""
+Develop a program that uses class Student which prompts the user to enter 
+marks in three subjects and calculates total marks, percentage and 
+displays the score card details. 
+[Hint: Use list to store the marks in three subjects and total marks. 
+ Use __init__() method to initialize name, 
+ USN and the lists to store marks and total, Use getMarks() 
+ method to read marks into the list, and display () method to display the score card details.]
+"""""
+
+
 class Student:
     def __init__(self):
         self.name = input("Enter student name: ")
-        self.usn = input("Enter student USN: ")
-        self.marksList = []   # To store marks of 3 subjects
-        self.totalList = []   # To store total marks
-        self.totalMarks = 0
-        self.percentage = 0.0
+        self.usn = input("Enter USN: ")
+        self.marks = []
 
     def getMarks(self):
-        print("\nEnter marks for 3 subjects:")
-        for i in range(1, 4):
-            mark = float(input("Enter mark for subject " + str(i) + ": "))
-            self.marksList.append(mark)
-
-        self.totalMarks = sum(self.marksList)
-        self.totalList.append(self.totalMarks)
-        self.percentage = self.totalMarks / 3
+        for i in range(3):
+            mark = float(input(f"Enter marks for Subject {i+1} : "))
+            self.marks.append(mark)
 
     def display(self):
-        print("\n------ STUDENT SCORE CARD ------")
-        print("Name:", self.name)
-        print("USN:", self.usn)
-        print("Marks in 3 subjects:", self.marksList)
-        print("Total Marks:", self.totalList[0])
-        print("Percentage:", round(self.percentage, 2), "%")
-        print("--------------------------------")
+        total = sum(self.marks)
+        percentage = total / 3
+
+        print("\n----- SCORE CARD -----")
+        print("Name :", self.name)
+        print("USN :", self.usn)
+        print("Marks :", self.marks)
+        print("Total :", total)
+        print("Percentage :", round(percentage, 2), "%")
 
 
-# Create object and call methods
-student1 = Student()
-student1.getMarks()
-student1.display()
+s = Student()
+s.getMarks()
+s.display()
